@@ -2,7 +2,7 @@
 Selftest for waxprint wp-2 — bead cooling, fan wind vector, print voxels.
 
 Run from polari-framework/:
-    python3 -m waxprint.selftest_bead_voxel
+    python3 -m waxprint.bead_voxel_selftest
 
 Validates the air/forced-convection helpers, an ANALYTIC no-latent
 Newtonian-cooling closed form for the bead integrator, the fan-vector
@@ -13,10 +13,10 @@ model, and the resolution-at-height profile on the seeded rows.
 import math
 from types import SimpleNamespace
 
-from waxprint import bead_cooling as bc
-from waxprint import voxel_resolution as vox
-from waxprint import bead_analysis
-from waxprint.auger_melt import c_to_k
+from waxprint.custom import bead_cooling as bc
+from waxprint.custom import voxel_resolution as vox
+from waxprint.custom import bead_analysis
+from waxprint.custom.auger_melt import c_to_k
 from waxprint.waxprint_seed import (
     SEED_DEVICE_MATERIALS, SEED_FEEDSTOCKS, SEED_ASSEMBLIES, SEED_CONDITIONS)
 

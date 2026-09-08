@@ -1,6 +1,6 @@
 """
 @cross-cutting
-@module waxprint.movement_patterns
+@module waxprint.custom.movement_patterns
 @tags @xc:bindings
 
 wp-3 — prove the basic MOVEMENTS a 3D printer relies on are viable under
@@ -30,8 +30,8 @@ Patterns (the standard toolpath repertoire):
                    the nozzle smears it.
 
 @consumers
-  - waxprint.movement_analysis, waxprint.print_optimizer
-  - waxprint.selftest_movement
+  - waxprint.custom.movement_analysis, waxprint.custom.print_optimizer
+  - waxprint.movement_selftest
 """
 
 G = 9.81

@@ -6,7 +6,7 @@ uses, proving the physics projects onto the next WaxPrintSimState row's
 fields entirely via no-code.
 
 Run from polari-framework/:
-    python3 -m waxprint.selftest_sim_step
+    python3 -m waxprint.sim_step_selftest
 """
 
 import json

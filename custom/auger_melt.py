@@ -1,12 +1,12 @@
 """
 @cross-cutting
-@module waxprint.auger_melt
+@module waxprint.custom.auger_melt
 @tags @xc:bindings
 
 Pure physics for the pellet-fed auger-screw wax extruder — the "magic
 3D printer" melt path. NO manager, NO I/O, stdlib `math` only (so the
 selftest and the analysis layer both import it freely, exactly like
-mathshapes.shape_geometry).
+mathshapes.custom.shape_geometry).
 
 The device is a single-screw extruder with TWO independently controlled
 thermal zones (Dustin 2026-07-17): an AUGER zone (the screw softens /
@@ -48,8 +48,8 @@ Physics, all first-principles and hand-checkable:
      evidence-bearing verdicts, not booleans in a vacuum.
 
 @consumers
-  - waxprint.melt_analysis (wraps these with manager lookups + gate)
-  - waxprint.selftest_auger_melt (validates against hand computed numbers)
+  - waxprint.custom.melt_analysis (wraps these with manager lookups + gate)
+  - waxprint.auger_melt_selftest (validates against hand computed numbers)
 @see /MVW_PRINT_SIM_PLAN.md, /WAX_PRINT_VOXEL_PLAN.md
 """
 

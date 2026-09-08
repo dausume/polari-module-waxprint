@@ -1,6 +1,6 @@
 """
 @cross-cutting
-@module waxprint.print_optimizer
+@module waxprint.custom.print_optimizer
 @tags @xc:bindings
 
 wp-4 — the point of the whole module: iterate MANY trials over the
@@ -25,12 +25,14 @@ silent (knobs-and-suggestions / no-silent-caps).
 
 @consumers
   - waxprint.waxprint_api (/api/waxprint/optimize)
-  - waxprint.selftest_optimizer
+  - waxprint.optimizer_selftest
 """
 
 from types import SimpleNamespace
 
-from waxprint import melt_analysis, bead_analysis, movement_analysis
+from waxprint.custom import melt_analysis
+from waxprint.custom import bead_analysis
+from waxprint.custom import movement_analysis
 
 MAX_TRIALS = 600
 

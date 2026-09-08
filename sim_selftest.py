@@ -3,7 +3,7 @@ Selftest for waxprint wp-5/wp-6 — the multiscale sim space, the 3D scene
 seed, the condition-evaluation gates, and the live eval equations.
 
 Run from polari-framework/:
-    python3 -m waxprint.selftest_sim
+    python3 -m waxprint.sim_selftest
 
 Validates: the height-stepped runner (rows, monotonic height, resolution
 degrading with height), the evaluation gates (a good run meets all, a
@@ -16,9 +16,10 @@ sim def + runs + page display parse and cross-reference).
 import json
 from types import SimpleNamespace
 
-from waxprint import sim_runner, sim_evaluation
+from waxprint.custom import sim_runner
+from waxprint.custom import sim_evaluation
 from waxprint import sim_seed
-from waxprint.sim_state import WaxPrintSimState
+from waxprint.sim_state_basis import WaxPrintSimState
 from waxprint.waxprint_seed import (
     SEED_DEVICE_MATERIALS, SEED_FEEDSTOCKS, SEED_ASSEMBLIES, SEED_CONDITIONS)
 

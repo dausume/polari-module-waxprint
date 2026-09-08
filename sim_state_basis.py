@@ -1,6 +1,6 @@
 """
 @cross-cutting
-@module waxprint.sim_state
+@module waxprint.sim_state_basis
 @tags @xc:bindings, @xc:render-3d
 
 WaxPrintSimState — one persisted timestep of the wax-print simulation.
@@ -18,7 +18,7 @@ SimSpaceEvaluationEquation condition overlays.
 
 @consumers
   - polariServer.defClassList (auto-CRUDE + persistence)
-  - waxprint.sim_runner (projects physics onto these rows)
+  - waxprint.custom.sim_runner (projects physics onto these rows)
   - waxprint.sim_seed (SimulationDefinition + SimSpace scene + evals)
 @see /WAX_PRINT_VOXEL_PLAN.md
 """

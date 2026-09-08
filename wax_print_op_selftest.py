@@ -3,7 +3,7 @@ Self-test for the WaxPrintOperation no-code state (wp-7) — the wax-printer
 COMMAND engine callable from a no-code solution graph.
 
 Run from polari-framework/:
-    python3 -m waxprint.selftest_wax_print_op
+    python3 -m waxprint.wax_print_op_selftest
 
 Proves the no-code engine can run each wax-print command from a graph:
 bind the assembly/feedstock/condition (+ height) instance fields into the

@@ -1,6 +1,6 @@
 """
 @cross-cutting
-@module waxprint.bead_analysis
+@module waxprint.custom.bead_analysis
 
 Manager-facing layer for wp-2: resolve an assembly + feedstock + condition
 by name, run the wp-1 two-zone melt to get the nozzle EXIT temperature and
@@ -10,12 +10,13 @@ voxel_resolution; HTTP is in waxprint_api.
 
 @consumers
   - waxprint.waxprint_api (/api/waxprint/voxel, /resolution-profile)
-  - waxprint.print_optimizer
-  - waxprint.selftest_bead_voxel
+  - waxprint.custom.print_optimizer
+  - waxprint.bead_voxel_selftest
 """
 
-from waxprint import melt_analysis, voxel_resolution
-from waxprint.bead_cooling import wind_speed_from_vector
+from waxprint.custom import melt_analysis
+from waxprint.custom import voxel_resolution
+from waxprint.custom.bead_cooling import wind_speed_from_vector
 from waxprint.waxprint_basis import CONVECTION_PRESETS
 
 

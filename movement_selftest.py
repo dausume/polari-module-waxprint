@@ -2,7 +2,7 @@
 Selftest for waxprint wp-3 — movement-pattern viability.
 
 Run from polari-framework/:
-    python3 -m waxprint.selftest_movement
+    python3 -m waxprint.movement_selftest
 
 Checks each pattern's criterion direction (a good bead passes; a bad bead
 fails on the expected limiting factor), the overall worst-wins roll-up,
@@ -11,8 +11,8 @@ and the end-to-end run via a mock manager including at-height evaluation.
 
 from types import SimpleNamespace
 
-from waxprint import movement_patterns as mp
-from waxprint import movement_analysis
+from waxprint.custom import movement_patterns as mp
+from waxprint.custom import movement_analysis
 from waxprint.waxprint_seed import (
     SEED_DEVICE_MATERIALS, SEED_FEEDSTOCKS, SEED_ASSEMBLIES, SEED_CONDITIONS)
 

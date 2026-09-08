@@ -1,6 +1,6 @@
 """
 @cross-cutting
-@module waxprint.commands
+@module waxprint.custom.commands
 
 The wax-printer COMMAND layer — one dispatch surface the no-code
 WaxPrintOperation node calls, and the extension point toward direct
@@ -34,9 +34,11 @@ extrude, retract → gRPC bridge machine instructions.
   - waxprint.selftest_commands
 """
 
-from waxprint import (melt_analysis, bead_analysis, movement_analysis,
-                      movement_patterns)
-from waxprint.bead_analysis import _resolve
+from waxprint.custom import melt_analysis
+from waxprint.custom import bead_analysis
+from waxprint.custom import movement_analysis
+from waxprint.custom import movement_patterns
+from waxprint.custom.bead_analysis import _resolve
 
 #: Print-parameter OVERRIDES any physics command accepts as scalar inputs
 #: on top of the named condition row — so a no-code graph can MANIPULATE
@@ -144,7 +146,7 @@ def condition_with_overrides(condition, inputs):
     condition with any OVERRIDE_INPUTS the graph supplied applied on top.
     This is what makes every knob no-code-manipulable without editing a
     row. Returns the original condition when nothing is overridden."""
-    from waxprint.bead_analysis import _f
+    from waxprint.custom.bead_analysis import _f
     from types import SimpleNamespace
     fields = {k: getattr(condition, k, None) for k in _CONDITION_FIELDS}
     changed = False
@@ -205,8 +207,8 @@ def run_command(manager, command, inputs):
     condition = condition_with_overrides(rows['condition'], inputs)
 
     if command == 'resolution-profile':
-        from waxprint import voxel_resolution
-        from waxprint.bead_analysis import _feed_props, _env, _f
+        from waxprint.custom import voxel_resolution
+        from waxprint.custom.bead_analysis import _feed_props, _env, _f
         mr, _voxel, _e = bead_analysis.voxel_for_condition(
             manager, assembly, feedstock, condition)
         feed = _feed_props(feedstock)
@@ -275,7 +277,7 @@ def run_command(manager, command, inputs):
 
 
 def _cmd_evaluate_run(manager, inputs):
-    from waxprint import sim_evaluation
+    from waxprint.custom import sim_evaluation
     run = inputs.get('run', '')
     if not run:
         return {'ok': False, 'error': 'evaluate-run needs a "run" input'}
@@ -297,7 +299,7 @@ def _cmd_evaluate_run(manager, inputs):
 
 
 def _cmd_optimize(manager, inputs):
-    from waxprint import print_optimizer
+    from waxprint.custom import print_optimizer
     a = inputs.get('assembly', '')
     f = inputs.get('feedstock', '')
     if not (a and f):
@@ -324,8 +326,8 @@ def _cmd_optimize(manager, inputs):
 
 
 def _substrate_at(feedstock, condition, height):
-    from waxprint import voxel_resolution
-    from waxprint.bead_analysis import _f
+    from waxprint.custom import voxel_resolution
+    from waxprint.custom.bead_analysis import _f
     if height <= 0:
         return _f(condition, 'bed_temp_c', 22.0)
     return voxel_resolution.substrate_temp_at_height(

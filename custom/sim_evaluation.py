@@ -1,6 +1,6 @@
 """
 @cross-cutting
-@module waxprint.sim_evaluation
+@module waxprint.custom.sim_evaluation
 
 The CONDITION GATES for a wax-print run — "do the various conditions get
 met?" as data. Given a run's WaxPrintSimState rows + targets, each gate
@@ -14,7 +14,7 @@ so the seed path, the API, and the selftest all share them.
 
 @consumers
   - waxprint.sim_api (/sim/evaluate, /sim/run-range)
-  - waxprint.selftest_sim
+  - waxprint.sim_selftest
 """
 
 

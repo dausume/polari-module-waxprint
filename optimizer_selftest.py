@@ -2,7 +2,7 @@
 Selftest for waxprint wp-4 — the trials sweep + optimizer + report.
 
 Run from polari-framework/:
-    python3 -m waxprint.selftest_optimizer
+    python3 -m waxprint.optimizer_selftest
 
 Runs a real sweep over the seeded assemblies + feedstocks and checks the
 report shape, the safety exclusion, the ranking sanity (a fine cooled
@@ -12,7 +12,7 @@ questions. Also prints the headline result so the run is human-readable.
 
 from types import SimpleNamespace
 
-from waxprint import print_optimizer as opt
+from waxprint.custom import print_optimizer as opt
 from waxprint.waxprint_seed import (
     SEED_DEVICE_MATERIALS, SEED_FEEDSTOCKS, SEED_ASSEMBLIES, SEED_CONDITIONS)
 

@@ -2,7 +2,7 @@
 Selftest for waxprint wp-1 — two-zone auger melt physics + safety gate.
 
 Run from polari-framework/:
-    python3 -m waxprint.selftest_auger_melt
+    python3 -m waxprint.auger_melt_selftest
 
 Stdlib only (the physics is pure `math`); the manager is a mock
 SimpleNamespace built from the seed lists (aquaponics selftest idiom).
@@ -14,8 +14,8 @@ safety verdicts on the seeded rows.
 import math
 from types import SimpleNamespace
 
-from waxprint import auger_melt as am
-from waxprint import melt_analysis
+from waxprint.custom import auger_melt as am
+from waxprint.custom import melt_analysis
 from waxprint.waxprint_seed import (
     SEED_DEVICE_MATERIALS, SEED_FEEDSTOCKS, SEED_ASSEMBLIES, SEED_CONDITIONS)
 

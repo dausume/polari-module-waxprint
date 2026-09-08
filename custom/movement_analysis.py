@@ -1,6 +1,6 @@
 """
 @cross-cutting
-@module waxprint.movement_analysis
+@module waxprint.custom.movement_analysis
 
 Manager-facing wp-3: resolve the rows, run the wp-1 melt (for exit
 viscosity + safety) and the wp-2 voxel (for spread + solidify time),
@@ -11,13 +11,15 @@ movements, this resolution".
 
 @consumers
   - waxprint.waxprint_api (/api/waxprint/movements)
-  - waxprint.print_optimizer
-  - waxprint.selftest_movement
+  - waxprint.custom.print_optimizer
+  - waxprint.movement_selftest
 """
 
-from waxprint import melt_analysis, bead_analysis, voxel_resolution
-from waxprint import movement_patterns
-from waxprint.bead_analysis import _feed_props, _env, _f
+from waxprint.custom import melt_analysis
+from waxprint.custom import bead_analysis
+from waxprint.custom import voxel_resolution
+from waxprint.custom import movement_patterns
+from waxprint.custom.bead_analysis import _feed_props, _env, _f
 
 
 def movements_for_condition(manager, assembly, feedstock, condition,

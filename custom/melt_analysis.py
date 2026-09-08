@@ -1,8 +1,8 @@
 """
 @cross-cutting
-@module waxprint.melt_analysis
+@module waxprint.custom.melt_analysis
 
-Manager-facing layer over waxprint.auger_melt — resolves an assembly +
+Manager-facing layer over waxprint.custom.auger_melt — resolves an assembly +
 feedstock + condition by NAME from the object tables, converts the mm /
 Celsius row fields into the SI payload the pure physics wants (applying
 the assembly `assembly_scale` and the condition's nozzle override), runs
@@ -12,11 +12,11 @@ notes. No physics lives here (that is auger_melt); no HTTP lives here
 
 @consumers
   - waxprint.waxprint_api (/api/waxprint/melt)
-  - waxprint.print_optimizer (per-trial evaluation)
-  - waxprint.selftest_auger_melt
+  - waxprint.custom.print_optimizer (per-trial evaluation)
+  - waxprint.auger_melt_selftest
 """
 
-from waxprint import auger_melt
+from waxprint.custom import auger_melt
 
 
 def find_row(manager, class_name, name):

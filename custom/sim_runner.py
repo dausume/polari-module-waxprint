@@ -1,6 +1,6 @@
 """
 @cross-cutting
-@module waxprint.sim_runner
+@module waxprint.custom.sim_runner
 
 Populates WaxPrintSimState rows for a wax-print run. The "time" axis is
 BUILD HEIGHT: step i samples the print at height z_i, so the SimSpace3D
@@ -18,11 +18,13 @@ SimulationRun objects so a fresh run renders immediately.
 @consumers
   - waxprint.sim_seed (baseline run rows as dicts)
   - waxprint.sim_api (POST /sim/run, /sim/run-range)
-  - waxprint.selftest_sim
+  - waxprint.sim_selftest
 """
 
-from waxprint import melt_analysis, movement_analysis, voxel_resolution
-from waxprint.bead_analysis import _f, _feed_props
+from waxprint.custom import melt_analysis
+from waxprint.custom import movement_analysis
+from waxprint.custom import voxel_resolution
+from waxprint.custom.bead_analysis import _f, _feed_props
 
 DEFAULT_N_STEPS = 12
 DEFAULT_MAX_HEIGHT_MM = 40.0
@@ -38,7 +40,7 @@ def compute_step_rows(manager, assembly_name, feedstock_name, condition_name,
     """Compute one WaxPrintSimState row DICT per build-height step. Pure
     (no object creation) — used by the seed path and the API path alike.
     Returns {'ok': True, 'rows': [...], 'assembly'..} or an error dict."""
-    from waxprint.bead_analysis import _resolve
+    from waxprint.custom.bead_analysis import _resolve
     rows_in = _resolve(manager, assembly_name, feedstock_name, condition_name)
     if 'error' in rows_in:
         return rows_in
@@ -136,7 +138,7 @@ def persist_run(manager, assembly_name, feedstock_name, condition_name,
     fresh run renders in the current session. Returns the compute result
     plus the created run name. Requires the SimState + SimulationRun
     classes (imported lazily so pure/selftest paths don't need them)."""
-    from waxprint.sim_state import WaxPrintSimState
+    from waxprint.sim_state_basis import WaxPrintSimState
     base = run_name or f'wax-print-{condition_name}'
     run_name = _unique_run_name(manager, base)
     out = compute_step_rows(manager, assembly_name, feedstock_name,

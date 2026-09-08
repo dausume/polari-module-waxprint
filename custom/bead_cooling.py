@@ -1,6 +1,6 @@
 """
 @cross-cutting
-@module waxprint.bead_cooling
+@module waxprint.custom.bead_cooling
 @tags @xc:bindings
 
 Pure physics for the DEPOSITED bead (wp-2) — the road of molten wax after
@@ -32,14 +32,14 @@ What it answers:
      accuracy the voxel model consumes.
 
 @consumers
-  - waxprint.voxel_resolution (achievable voxel + at-height table)
-  - waxprint.bead_analysis (row resolution + HTTP)
-  - waxprint.selftest_bead_voxel
+  - waxprint.custom.voxel_resolution (achievable voxel + at-height table)
+  - waxprint.custom.bead_analysis (row resolution + HTTP)
+  - waxprint.bead_voxel_selftest
 """
 
 import math
 
-from waxprint.auger_melt import c_to_k, k_to_c, enthalpy_to_state
+from waxprint.custom.auger_melt import c_to_k, k_to_c, enthalpy_to_state
 
 G = 9.81                    # m/s^2
 P_ATM = 101325.0           # Pa
@@ -131,7 +131,7 @@ def cool_bead(
     and accumulate its viscous spread. Returns a dict with t_solidify_s,
     final_width_m, spread_m, the convection coefficients, and a warp
     asymmetry index. All per unit length; widths in metres."""
-    from waxprint.auger_melt import viscosity_pa_s
+    from waxprint.custom.auger_melt import viscosity_pa_s
 
     area, air_perim, bed_width = bead_cross_section(width_m, layer_height_m)
     mass = density * area                       # per unit length (kg/m)

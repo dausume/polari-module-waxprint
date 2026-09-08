@@ -1,6 +1,6 @@
 """
 @cross-cutting
-@module waxprint.voxel_resolution
+@module waxprint.custom.voxel_resolution
 @tags @xc:bindings
 
 Print VOXELS — the whole sim is expressed in them (Dustin 2026-07-17:
@@ -26,11 +26,11 @@ in bead_analysis. This is also where the future MELT voxel (laser
 ablation resolution) will attach; the seam is noted below.
 
 @consumers
-  - waxprint.bead_analysis, waxprint.print_optimizer
-  - waxprint.selftest_bead_voxel
+  - waxprint.custom.bead_analysis, waxprint.custom.print_optimizer
+  - waxprint.bead_voxel_selftest
 """
 
-from waxprint import bead_cooling
+from waxprint.custom import bead_cooling
 
 MM = 1000.0                 # m → mm
 
